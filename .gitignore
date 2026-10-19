@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Abdi",
+        "account_number": "00123457",
+        "balance": 11500.0,
+        "account_type": "Savings",
+        "transactions": [
+            "Transfer from mohammed: +$2000.00",
+            "Transfer from kasa: +$1000.00"
+        ]
+    },
+    {
+        "name": "Aman",
+        "account_number": "00123444",
+        "balance": 1800.0,
+        "account_type": "Savings",
+        "transactions": []
+    },
+    {
+        "name": "mohammed",
+        "account_number": "0011223344",
+        "balance": 1000.0,
+        "account_type": "savings",
+        "transactions": [
+            "Account Created: Initial Balance $3000.00",
+            "Transfer to Abdi: -$2000.00"
+        ]
+    },
+    {
+        "name": "kasa",
+        "account_number": "00998877",
+        "balance": 87800.0,
+        "account_type": "savings",
+        "transactions": [
+            "Account Created: Initial Balance $90000.00",
+            "Deposit: +$4000.00",
+            "Deposit: +$800.00",
+            "Withdrawal: -$2000.00",
+            "Withdrawal: -$4000.00",
+            "Transfer to Abdi: -$1000.00"
+        ]
+    },
+    {
+        "name": "jemal",
+        "account_number": "99887766",
+        "balance": 200000.0,
+        "account_type": "cheking",
+        "transactions": [
+            "Account Created: Initial Balance $200000.00"
+        ]
+    }
+]
+
+
+__pycache__
+
+customers.json
