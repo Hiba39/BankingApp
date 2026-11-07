@@ -1,0 +1,51 @@
+BANKING SYSTEM - CLEANUP AUDIT REPORT
+=============================================
+Generated: 2026-10-24T20:57:38.265152
+Mode: READ ONLY
+
+Account: 00123456
+Duplicate records: 2
+
+Record 1
+Name: Adrian
+Balance: 24906.0
+Transaction count: 0
+
+Record 2
+Name: Adrian
+Balance: 24906.0
+Transaction count: 8
+Decision: MANUAL REVIEW REQUIRED
+---------------------------------------------
+
+Account: 00123457
+Duplicate records: 2
+
+Record 1
+Name: Abdi
+Balance: 12005.0
+Transaction count: 1
+
+Record 2
+Name: Abdi
+Balance: 11995.0
+Transaction count: 11
+Decision: MANUAL REVIEW REQUIRED
+---------------------------------------------
+
+Account: 00998877
+Duplicate records: 2
+
+Record 1
+Name: Jemal
+Balance: 11310.0
+Transaction count: 17
+
+Record 2
+Name: Jemal
+Balance: 10000.0
+Transaction count: 9
+Decision: MANUAL REVIEW REQUIRED
+---------------------------------------------
+
+No customer data was modified.

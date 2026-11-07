@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoopApp KPI Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="slide">
+    <nav class="tabs">
+    <button class="tab active" data-view="viewDash">KPI Dashboard</button>
+    <button class="tab" data-view="viewWeekly">Weekly Report</button>
+<span class="spacer"></span><button class="tab-btn" id="csvBtn">Export CSV</button><button class="tab-btn" id="printBtn">Print PDF</button></nav>
+<header class="header">
+        <div>
+            <h1>CoopApp KPI Dashboard</h1>
+            <p class="subtitle">Registrations, transactions and customer activity — illustrative sample data</p>
+        </div>
+        <div class="field sector">
+            <label for="sector">Sector</label>
+            <select id="sector"><option>All Sectors</option><option>Government</option><option>NGO</option><option>Private Company</option><option>SME</option><option>Cooperative</option><option>Others</option></select>
+        </div>
+    </header>
+
+    <section class="filters">
+        <div class="field f-period"><label for="period">Registration Period</label>
+            <select id="period">
+                <option>MTD</option><option>Today</option><option>This Week</option>
+                <option>This Month</option><option>Quarterly</option><option>YTD</option><option>Custom</option>
+            </select></div>
+        <div class="field"><label for="district">District</label>
+            <select id="district">
+                <option>All Districts</option><option>District A</option>
+                <option>District B</option><option>District C</option>
+            </select></div>
+        <div class="field"><label for="branch">Branch</label>
+            <select id="branch"><option>All Branches</option></select></div>
+        <div class="field"><label for="segment">Customer Segment</label>
+            <select id="segment">
+                <option>All Segments</option><option>Retail</option>
+                <option>Business</option><option>Both</option>
+            </select></div>
+        <div class="field"><label for="bank">Banking Type</label>
+            <select id="bank">
+                <option>All</option><option>Conventional</option><option>IFB</option>
+            </select></div>
+        <div class="field f-access"><label for="access">Access Type</label>
+            <select id="access"><option>All Access Types</option><option>View Only</option><option>Full Access</option></select></div>
+        <div class="field f-search"><label for="search">Search Customer</label><input type="text" id="search" placeholder="ID, name, contract…"></div>
+        <button id="resetBtn" class="reset" title="Reset filters">&#8635;</button>
+    </section>
+
+    <div id="viewDash">
+    <section class="kpis">
+        <div class="kpi green"><span class="k-label">Registered Customers</span><strong id="kReg"></strong><small id="kRegSub"></small></div>
+        <div class="kpi blue"><span class="k-label">Transaction Volume</span><strong id="kVol"></strong><small>Successful / posted / completed</small></div>
+        <div class="kpi teal"><span class="k-label">Transaction Count</span><strong id="kCnt"></strong><small>Unique successful transactions</small></div>
+        <div class="kpi orange"><span class="k-label">Active Transacting Customers</span><strong id="kActive"></strong><small id="kActiveSub"></small></div>
+    </section>
+
+    <section class="main">
+        <div class="panel">
+            <h3>Customer Registration Mix</h3>
+            <p class="p-sub">Retail / Business / Both</p>
+            <div class="bar-row"><span>Retail</span><div class="track"><div id="bRetail" class="fill c-blue"></div></div><b id="nRetail"></b></div>
+            <div class="bar-row"><span>Business</span><div class="track"><div id="bBusiness" class="fill c-green"></div></div><b id="nBusiness"></b></div>
+            <div class="bar-row"><span>Both</span><div class="track"><div id="bBoth" class="fill c-orange"></div></div><b id="nBoth"></b></div>
+            <div class="split"><span>Conventional <b id="nConv"></b></span><span>IFB <b id="nIfb"></b></span></div>
+        </div>
+
+        <div class="panel">
+            <h3>Transaction Mix</h3>
+            <p class="p-sub">Successful transactions only</p>
+            <div class="tx-row">
+                <div><span class="tx-name">A2A</span><div class="tx-val blue-t" id="a2aVol"></div><small id="a2aTx"></small></div>
+                <div><span class="tx-name">Other Bank</span><div class="tx-val green-t" id="otherVol"></div><small id="otherTx"></small></div>
+            </div>
+            <div class="avg"><span>Average Transaction Value</span><strong id="avgVal"></strong></div>
+        </div>
+
+        <div class="panel top">
+            <h3>Top Business Customers</h3>
+            <p class="p-sub">Ranked by transaction volume</p>
+            <table>
+                <thead><tr><th>#</th><th>Customer</th><th>Type</th><th class="r">Count</th><th class="r">Volume</th></tr></thead>
+                <tbody id="topBody"></tbody>
+            </table>
+            <div class="note">Top 20 by volume and count available in detailed report</div>
+        </div>
+
+        <div class="panel perf">
+            <h3>District / Branch Performance</h3>
+            <p class="p-sub">Registration and transaction KPIs</p>
+            <table>
+                <thead><tr><th>Unit</th><th class="r">Registrations</th><th class="r">Txn Count</th><th class="r">Txn Volume</th><th class="r">Penetration</th></tr></thead>
+                <tbody id="perfBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="main plan-row">
+        <div class="panel perf">
+            <h3>District &amp; Branch Plan vs. Actual</h3>
+            <p class="p-sub">Customer acquisition target, actual registrations and volume (click a district to expand)</p>
+            <div class="wk-scroll"><table class="plan"><thead><tr><th>District / Branch</th><th class="r">Target Cust.</th><th class="r">Actual</th><th class="r">Attainment</th><th class="r">Target Vol</th><th class="r">Actual Vol</th><th>Status</th></tr></thead><tbody id="planBody"></tbody></table></div>
+        </div>
+        <div class="panel">
+            <h3>High Activity &amp; Access</h3>
+            <p class="p-sub">Based on the filtered customers below</p>
+            <div class="thr"><label>High volume ≥ <input type="number" id="hvT" value="40" min="0"> M</label><label>High count ≥ <input type="number" id="hcT" value="600" min="0"></label></div>
+            <div class="ha"><div><b id="hvN"></b><small>High Volume</small></div><div><b id="hcN"></b><small>High Count</small></div><div><b id="faN"></b><small>Full Access</small></div><div><b id="voN"></b><small>View Only</small></div></div>
+        </div>
+    </section>
+    <section class="panel cust">
+        <div class="cust-head"><div><h3>Business Customer Detail</h3><p class="p-sub">Filtered by the slicers above</p></div><span id="custCount" class="p-sub"></span></div>
+        <div class="wk-scroll"><table class="plan"><thead><tr><th>Customer ID</th><th>Customer Name</th><th>Sector</th><th>District / Branch</th><th>Type</th><th>Access</th><th class="r">Txn Count</th><th class="r">Total Vol (M)</th><th class="r">A2A Vol (M)</th><th>Flags</th></tr></thead><tbody id="custBody"></tbody></table></div>
+    </section>
+
+    <p class="hint">Click any dropdown to change the displayed sample scenario.</p>
+    </div>
+
+<div id="viewWeekly" hidden>
+    <div class="banner">
+        <div class="logo">COOP<small>APP</small></div>
+        <div class="b-title"><h2>Coop App Business Team – <span>DASHBOARD</span></h2><p id="wkRange"></p></div>
+        <div class="logo gold">COOP<small>APP Alhuda</small></div>
+    </div>
+    <section class="datebar">
+        <div class="field"><label for="dMode">Date Filter</label>
+            <select id="dMode">
+                <option value="week">This Week</option><option value="day">Specific Date</option>
+                <option value="month">Month</option><option value="quarter">Quarter</option>
+                <option value="year">Year</option><option value="custom">Custom Range</option>
+            </select></div>
+        <div class="field d-opt" data-mode="day" hidden><label for="dDay">Date</label><input type="date" id="dDay"></div>
+        <div class="field d-opt" data-mode="month" hidden><label for="dMonth">Month</label><input type="month" id="dMonth"></div>
+        <div class="field d-opt" data-mode="quarter" hidden><label for="dQuarter">Quarter</label>
+            <select id="dQuarter"><option value="1">Q1 (Jan–Mar)</option><option value="2">Q2 (Apr–Jun)</option><option value="3" selected>Q3 (Jul–Sep)</option><option value="4">Q4 (Oct–Dec)</option></select></div>
+        <div class="field d-opt" data-mode="quarter year" hidden><label for="dYear">Year</label>
+            <select id="dYear"><option>2026</option></select></div>
+        <div class="field d-opt" data-mode="custom" hidden><label for="dFrom">From</label><input type="date" id="dFrom"></div>
+        <div class="field d-opt" data-mode="custom" hidden><label for="dTo">To</label><input type="date" id="dTo"></div>
+        <p id="dInfo" class="d-info"></p>
+    </section>
+    <div class="wk-grid">
+        <div>
+            <div class="wk-scroll">
+                <table class="wk">
+                    <thead>
+                        <tr><th rowspan="2">Service</th><th colspan="2" id="hd0"></th><th colspan="2" id="hd1"></th><th colspan="2" id="hd2"></th><th colspan="2" id="hd3"></th></tr>
+                        <tr class="sub"><th># of Trans</th><th>Amount</th><th># of Trans</th><th>Amount</th><th># of Trans</th><th>Amount</th><th># of Trans</th><th>Amount</th></tr>
+                    </thead>
+                    <tbody id="wkBody"></tbody>
+                </table>
+            </div>
+            <div class="avgs">
+                <div class="avg-card"><span>Avg. Onboarding</span><strong id="avOn"></strong><small>Per day</small></div>
+                <div class="avg-card"><span>Avg. Volume Trans.</span><strong id="avVol"></strong><small>Per day (MTD)</small></div>
+                <div class="avg-card"><span>Avg. No. of Trans.</span><strong id="avCnt"></strong><small>Per day (MTD)</small></div>
+            </div>
+            <div class="panel trend">
+                <h3>Weekly Volume Trend (ETB Millions)</h3>
+                <p class="p-sub">Bank Transfer (A2A) vs Other Bank Transfer, last 6 weeks up to the selected end date</p>
+                <svg id="trendSvg" viewBox="0 0 640 260"></svg>
+                <div class="legend"><span><i style="background:#10a66e"></i>Bank Transfer (A2A)</span><span><i style="background:#7c3aed"></i>Other Bank Transfer</span></div>
+            </div>
+        </div>
+        <div>
+            <div class="cust-card">
+                <div><span class="c-lab">No. of Cust.</span><strong id="cTotal"></strong></div>
+                <div class="c-split">
+                    <div><span class="ico">&#127970;</span><b id="cBiz"></b><small>Business</small></div>
+                    <div><span class="ico">&#128100;</span><b id="cRet"></b><small>Retail</small></div>
+                </div>
+            </div>
+            <div class="cards4">
+                <div class="mini"><span class="m-title cy">Conventional</span><small>Amount</small><strong class="cy" id="mConvAmt"></strong></div>
+                <div class="mini"><span class="m-title or">CoopApp Alhuda</span><small>Amount</small><strong class="or" id="mAlhAmt"></strong></div>
+                <div class="mini"><span class="m-title cy">Conventional</span><small>No. of Tran.</small><strong class="cy" id="mConvTx"></strong></div>
+                <div class="mini"><span class="m-title or">CoopApp Alhuda</span><small>No. of Tran.</small><strong class="or" id="mAlhTx"></strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="foot"><span>CoopApp Business Banking</span><span>Interactive KPI Dashboard &nbsp; 2</span></footer>
+</div>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
