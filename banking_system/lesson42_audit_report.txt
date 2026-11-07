@@ -1,0 +1,8 @@
+BANKING SYSTEM - AUDIT SUMMARY
+========================================
+Total records: 9
+Unique account numbers: 6
+Duplicate account numbers: 3
+Records needing format review: 3
+
+No customer data was modified.

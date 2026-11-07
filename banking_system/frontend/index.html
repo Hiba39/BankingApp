@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coop Banking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">C</div>
+                <div>
+                    <h2>Coop Banking</h2>
+                    <small>Management System</small>
+                </div>
+            </div>
+
+            <nav class="navigation">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+                <a href="#customers" class="nav-link" data-section="customers">Customers</a>
+                <a href="#depositPanel" class="nav-link" data-section="depositPanel">Deposit</a>
+                <a href="#withdrawPanel" class="nav-link" data-section="withdrawPanel">Withdraw</a>
+                <a href="#transferPanel" class="nav-link" data-section="transferPanel">Transfer</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <small>Learning Project</small>
+                <p>Version 1.0</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome to your banking management system.</p>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Administrator</strong>
+                        <small>Demo Account</small>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="dashboard-section">
+                <div class="section-heading">
+                    <h2>Overview</h2>
+                    <p>Your customer and account summary</p>
+                </div>
+
+                <div class="summary-grid">
+                    <article class="summary-card">
+                        <span class="card-label">Total Customers</span>
+                        <strong id="totalCustomers">0</strong>
+                        <small>Customer records</small>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="card-label">Total Balance</span>
+                        <strong id="totalBalance">ETB 0.00</strong>
+                        <small>Combined recorded balances</small>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="card-label">Savings Accounts</span>
+                        <strong id="savingsAccounts">0</strong>
+                        <small>Savings account records</small>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="card-label">Current Accounts</span>
+                        <strong id="currentAccounts">0</strong>
+                        <small>Current account records</small>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Customers Section -->
+            <section id="customers" class="content-panel">
+                <div class="section-heading">
+                    <h2>Customer Records</h2>
+                    <p>Search, filter, and browse customer records.</p>
+                </div>
+
+                <div class="toolbar">
+                    <input type="text" id="searchName" placeholder="Search by customer name...">
+                    <select id="accountType">
+                        <option value="">All account types</option>
+                        <option value="saving">Savings</option>
+                        <option value="current">Current</option>
+                    </select>
+                    <button id="searchButton">Search</button>
+                    <button id="resetButton" class="secondary">Reset</button>
+                </div>
+
+                <p id="message" aria-live="polite">Loading customers...</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Account Number</th>
+                                <th>Balance</th>
+                                <th>Account Type</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTable"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="previousButton" class="secondary" disabled>Previous</button>
+                    <span id="pageInfo">Page 1</span>
+                    <button id="nextButton" disabled>Next</button>
+                </div>
+            </section>
+
+            <!-- Deposit Section -->
+            <section id="depositPanel" class="content-panel">
+                <h2>Make a Deposit</h2>
+                <p>Deposit funds into an existing practice account.</p>
+
+                <form id="depositForm">
+                    <div class="filter-group">
+                        <label for="depositAccount">Account Number</label>
+                        <input type="text" id="depositAccount" required pattern="[0-9]{8}" maxlength="8" placeholder="Enter 8-digit account number">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="depositAmount">Deposit Amount (ETB)</label>
+                        <input type="number" id="depositAmount" required min="0.01" max="1000000" step="0.01" placeholder="Enter amount">
+                    </div>
+
+                    <button type="submit">Submit Deposit</button>
+                </form>
+
+                <p id="depositMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <!-- Withdrawal Section -->
+            <section id="withdrawPanel" class="content-panel">
+                <h2>Make a Withdrawal</h2>
+                <p>Withdraw funds from an existing practice account.</p>
+
+                <form id="withdrawForm">
+                    <div class="filter-group">
+                        <label for="withdrawAccount">Account Number</label>
+                        <input type="text" id="withdrawAccount" required pattern="[0-9]{8}" maxlength="8" placeholder="Enter 8-digit account number">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="withdrawAmount">Withdrawal Amount (ETB)</label>
+                        <input type="number" id="withdrawAmount" required min="0.01" max="1000000" step="0.01" placeholder="Enter amount">
+                    </div>
+
+                    <button type="submit">Submit Withdrawal</button>
+                </form>
+
+                <p id="withdrawMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <!-- Transfer Section -->
+            <section class="content-panel" id="transferPanel">
+                <h2>Transfer Money</h2>
+                <p>Transfer funds between two customer accounts.</p>
+
+                <form id="transferForm">
+                    <div class="filter-group">
+                        <label for="senderAccount">Sender Account Number</label>
+                        <input type="text" id="senderAccount" maxlength="8" pattern="[0-9]{8}" placeholder="Enter sender account" required>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="recipientAccount">Recipient Account Number</label>
+                        <input type="text" id="recipientAccount" maxlength="8" pattern="[0-9]{8}" placeholder="Enter recipient account" required>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="transferAmount">Amount (ETB)</label>
+                        <input type="number" id="transferAmount" min="0.01" max="1000000" step="0.01" placeholder="Enter amount" required>
+                    </div>
+
+                    <button type="submit">Transfer Money</button>
+                    <p id="transferMessage" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <!-- Transfer Receipt Section -->
+            <section class="content-panel" id="transferReceipt" hidden>
+                <h2>Transfer Receipt</h2>
+                <p><strong>Reference:</strong> <span id="receiptReference"></span></p>
+                <p><strong>Sender Account:</strong> <span id="receiptSender"></span></p>
+                <p><strong>Recipient Account:</strong> <span id="receiptRecipient"></span></p>
+                <p><strong>Amount:</strong> <span id="receiptAmount"></span></p>
+                <p><strong>Sender New Balance:</strong> <span id="receiptSenderBalance"></span></p>
+                <label>
+                    <input type="checkbox" id="showRecipientBalance"> show recipient's new balance on receipt
+                </label>
+                <p id="recipientBalanceRow" hidden>
+                    <strong>Recipient New Balance:</strong> <span id="receiptRecipientBalance"></span>
+                </p>
+                <p><strong>Status:</strong> <span id="receiptStatus"></span></p>
+                <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+                <button type="button" onclick="window.print()">Print Receipt</button>
+            </section>
+
+            <!-- Customer Details Panel -->
+            <section id="customerDetails" class="content-panel details-panel" hidden>
+                <div class="details-header">
+                    <div>
+                        <h2>Customer Details</h2>
+                        <p>Account information and transaction history</p>
+                    </div>
+                    <button id="backToCustomers" class="secondary">Back to Customers</button>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span>Customer Name</span>
+                        <strong id="detailName">—</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Account Number</span>
+                        <strong id="detailAccount">—</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Account Type</span>
+                        <strong id="detailType">—</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Balance</span>
+                        <strong id="detailBalance">—</strong>
+                    </div>
+                </div>
+                <div class="transaction-report">
+                <h3>Transaction History</h3>
+
+                <div class="summary-grid">
+                    <article class="summary-card">
+                        <span class="card-label">Total Deposit</span>
+                        <strong id="reportDeposits">ETB 0.00</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="card-label">Total Withdrawals</span>
+                        <strong id="reportWithdrawals">ETB 0.00</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="card-label">Total Transfers</span>
+                        <strong id="reportTransfers">ETB 0.00</strong>
+                    </article>
+                </div>
+                
+                <div class="transaction-controls">
+                    <div class="filter-group">
+                        <label for="transactionFilter">Transaction Type</label>
+                        <select id="transactionFilter">
+                            <option value="ALL">All Transactions</option>
+                            <option value="DEPOSIT">Deposits</option>
+                            <option value="WITHDRAWAL">Withdrawals</option>
+                            <option value="TRANSFER">Transfers</option>
+                        </select>
+                    </div>   
+                    <button type="button" id="exportTransactions">
+                        Export Transactions
+                    </button>
+                    <div class="filter-group">
+                        <label for="transactionSort">Sort By</label>
+                        <select id="transactionSort">
+                            <option value="NEWEST">Newest First</option>
+                            <option value="OLDEST">Oldest First</option>
+                            <option value="HIGH_AMOUNT">Highest Amount</option>
+                            <option value="LOW_AMOUNT">Lowest Amount</option>
+                        </select>
+                    </div>   
+                </div>
+
+                <p id="transactionMessage" aria-live="polite">Select a customer to view transactions.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                Coop Banking System — Educational demonstration only.
+            </footer>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

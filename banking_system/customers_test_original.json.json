@@ -1,0 +1,264 @@
+[
+    {
+        "name": "Adrian",
+        "account_number": "00123456",
+        "balance": 24906.0,
+        "account_type": "Savings",
+        "transactions": []
+    },
+    {
+        "name": "Adrian",
+        "account_number": "00123456",
+        "balance": 24906.0,
+        "account_type": "Savings",
+        "transactions": [
+            "Deposit: +$8000.00",
+            "Deposit: +$1200.00",
+            "Deposit: +$1000.00",
+            "Withdrawal: -$300.00",
+            "Transfer to Abdi: -$500.00",
+            "Transfer from Abdi: +$6.00",
+            "Transfer to Abdi: -$500.00",
+            "Transfer to Abdi: -$2000.00"
+        ]
+    },
+    {
+        "name": "Abdi",
+        "account_number": "00123457",
+        "balance": 12005.0,
+        "account_type": "Savings",
+        "transactions": [
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00123457",
+                "amount": 10.0,
+                "status": "SUCCESS",
+                "description": "Transfer from Jemal",
+                "timestamp": "2026-10-22T13:27:30.331638"
+            }
+        ]
+    },
+    {
+        "name": "Abdi",
+        "account_number": "00123457",
+        "balance": 11995.0,
+        "account_type": "Savings",
+        "transactions": [
+            "Transfer from Adrian: +$500.00",
+            "Deposit: +$1.00",
+            "Transfer to Adrian: -$6.00",
+            "Transfer from Adrian: +$500.00",
+            "Transfer from Adrian: +$2000.00",
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00123457",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-21T14:11:56.166360"
+            },
+            "Withdrawal: -$300.00",
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00123457",
+                "amount": 200.0,
+                "status": "SUCCESS",
+                "description": "Cash withrawal",
+                "timestamp": "2026-10-21T14:52:33.104906"
+            },
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00123457",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Transfer from Jemal",
+                "timestamp": "2026-10-21T15:05:16.433126"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00123457",
+                "amount": 200.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-21T15:38:55.061784"
+            },
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00123457",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Transfer from Jemal",
+                "timestamp": "2026-10-22T09:02:17.144936"
+            }
+        ]
+    },
+    {
+        "name": "Jemal",
+        "account_number": "00998877",
+        "balance": 10960.0,
+        "account_type": "saving",
+        "transactions": [
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 10.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T10:01:47.787061"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 5.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T10:39:49.696233"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 200.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T10:46:27.870572"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 300.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T11:03:47.723356"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 25.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T11:14:32.519646"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 350.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T12:55:27.894489"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 60.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T12:58:50.660643"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 40.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-22T12:59:10.326256"
+            },
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00998877",
+                "amount": 10.0,
+                "status": "SUCCESS",
+                "description": "Cash withdrawal",
+                "timestamp": "2026-10-22T13:06:48.357168"
+            },
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00998877",
+                "amount": 10.0,
+                "status": "SUCCESS",
+                "description": "Cash withdrawal",
+                "timestamp": "2026-10-22T13:09:58.481834"
+            },
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00998877",
+                "amount": 10.0,
+                "status": "SUCCESS",
+                "description": "Transfer to Abdi",
+                "timestamp": "2026-10-22T13:27:30.331631"
+            }
+        ]
+    },
+    {
+        "name": "Jemal",
+        "account_number": "00998877",
+        "balance": 10000.0,
+        "account_type": "saving",
+        "transactions": [
+            "Account Created: Initial Balance $10000.00",
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00998877",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Transfer to Abdi",
+                "timestamp": "2026-10-21T15:05:16.433120"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 1e+104,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-21T16:30:06.778624"
+            },
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00998877",
+                "amount": 1e+100,
+                "status": "SUCCESS",
+                "description": "Cash withrawal",
+                "timestamp": "2026-10-21T16:31:22.074281"
+            },
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00998877",
+                "amount": 9.999e+103,
+                "status": "SUCCESS",
+                "description": "Cash withrawal",
+                "timestamp": "2026-10-21T16:31:52.893938"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 10000.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-21T16:32:30.553063"
+            },
+            {
+                "transaction_type": "DEPOSIT",
+                "account_number": "00998877",
+                "amount": 200.0,
+                "status": "SUCCESS",
+                "description": "Cash deposit",
+                "timestamp": "2026-10-21T16:33:17.554316"
+            },
+            {
+                "transaction_type": "WITHDRAWAL",
+                "account_number": "00998877",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Cash withdrawal",
+                "timestamp": "2026-10-21T16:49:01.160700"
+            },
+            {
+                "transaction_type": "TRANSFER",
+                "account_number": "00998877",
+                "amount": 100.0,
+                "status": "SUCCESS",
+                "description": "Transfer to Abdi",
+                "timestamp": "2026-10-22T09:02:17.144927"
+            }
+        ]
+    }
+]
